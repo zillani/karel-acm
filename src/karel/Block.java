@@ -1,37 +1,41 @@
 package karel;
+
 import stanford.karel.SuperKarel;
 
 public class Block extends SuperKarel {
-	public void run() {
-		while (frontIsClear()) {
-			move();
-			//condition if frontisBlocked
-			
-			jump();
-		}
+    public void run() {
+        while (frontIsClear()) {
+            move();
+            //condition if frontisBlocked
+            jump();
+        }
 
-	}
+    }
 
-	public void jump() {
-		if (frontIsBlocked()) {
-			turnLeft();
+    public static void main(String[] args) {
+        new Block().start(args);
+    }
 
-			while (rightIsBlocked()) {
-				move();
-			}
+    public void jump() {
+        if (frontIsBlocked()) {
+            turnLeft();
 
-			turnRight();
-			move();
-			turnRight();
+            while (rightIsBlocked()) {
+                move();
+            }
 
-			while (rightIsBlocked()) {
-				if (frontIsClear()) {
-					move();
-				}
+            turnRight();
+            move();
+            turnRight();
 
-				turnLeft();
-			}
+            while (rightIsBlocked()) {
+                if (frontIsClear()) {
+                    move();
+                }
 
-		}
-	}
+                turnLeft();
+            }
+
+        }
+    }
 }
